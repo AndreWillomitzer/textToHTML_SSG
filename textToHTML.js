@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const argv = require('yargs/yargs')(process.argv.slice(2))
-  .usage('Usage: $0 <command> [options]')
+  .usage('Usage: node $0 <command> [options]')
   .help('h')
   .option('i', {
     alias: 'input',
@@ -28,7 +28,7 @@ const argv = require('yargs/yargs')(process.argv.slice(2))
   .alias('o', 'output')
   .alias('s', 'stylesheet')
   .command("--input", "Convert lines in a text file to HTML <p> tags.")
-  .example("textToHTML: node textToHTML.js {option} <filename>.").argv
+  .example("textToHTML: node textToHTML.js -i <filename>.").argv
   //console.log(argv);
 //console.log(argv.file);
 const fs = require('fs');
