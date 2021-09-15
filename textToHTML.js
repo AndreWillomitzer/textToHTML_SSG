@@ -71,16 +71,15 @@ fs.readdirSync(argv.input).forEach(file =>{
       const html = data
       .split(/\r?\n\r?\n/)
       .map(para =>
-        `<p>${para.replace(/\r?\n/, ' ')}</p>`
+        `\n<p>${para.replace(/\r?\n/, ' ')}</p>`
       ).join(' ');
 
   console.log("html value:", html);
-  if(!argv.s){
+  tempString = `<!DOCTYPE html>` + '\n'
+  + `<html>\n<head> \n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">` + `\n</head>\n<body>` + `${html}` + `\n</body>\n</html>`;
+  if(argv.s){
     tempString = `<!DOCTYPE html>` + '\n'
-    + `<html>\n<head> \n<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">` + `\n</head>\n<body>` + `${html}` + `\n</body>\n</html>`;
-  }else{
-    tempString = `<!DOCTYPE html>` + '\n'
-    + `<html>\n<head>` + `\n<link rel="stylesheet" href="${argv.s}"> <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"> \n</head>\n<body>\n` + `${html}` + `\n</body>\n</html>`;
+    + `<html>\n<head> \n<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">` + `\n<link rel="stylesheet" href="${argv.s}"> \n</head>\n<body>` + `${html}` + `\n</body>\n</html>`;
   }
     fs.writeFile(`${argv.output}/${file.split(".")[0]}.html`, tempString, error=>{
       if(error){
@@ -100,10 +99,9 @@ fs.readdirSync(argv.input).forEach(file =>{
           .map(para =>
             `\n<p>${para.replace(/\r?\n/, ' ')}</p> </br>`
           ).join(' ');
-        if(!argv.s){
-          tempString = `<!DOCTYPE html>` + '\n'
-          + `<html>\n<head> \n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">` + `\n</head>\n<body>` + `${html}` + `\n</body>\n</html>`;
-        }else{
+        tempString = `<!DOCTYPE html>` + '\n'
+        + `<html>\n<head> \n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">` + `\n</head>\n<body>` + `${html}` + `\n</body>\n</html>`;
+        if(argv.s){
           tempString = `<!DOCTYPE html>` + '\n'
           + `<html>\n<head> \n<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">` + `\n<link rel="stylesheet" href="${argv.s}"> \n</head>\n<body>` + `${html}` + `\n</body>\n</html>`;
         }
