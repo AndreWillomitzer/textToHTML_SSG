@@ -35,7 +35,7 @@ const fs = require('fs');
 const path = require('path');
 let tempString;
 console.log("argv.o: ", argv.o);
-if(!argv.o){
+if(argv.o === "./dist"){
   if(fs.existsSync("./dist")){
       fs.rmdirSync("./dist",{recursive: true} , error=>{
         if(error){
@@ -96,7 +96,7 @@ fs.readdirSync(argv.input).forEach(file =>{
         `\n<p>${para.replace(/\r?\n/, ' ')}</p>`
       ).join(' ');
 
-  console.log("html value:", html);
+  //console.log("html value:", html);
   tempString = `<!DOCTYPE html>` + '\n'
   + `<html>\n<head> \n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">` + `\n</head>\n<body>` + `${html}` + `\n</body>\n</html>`;
   if(argv.s){

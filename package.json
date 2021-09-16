@@ -1,8 +1,8 @@
 {
-  "name": "textToHTML",
+  "name": "texttohtml",
   "version": "0.1",
   "description": "A text to HTML parsing CLI tool.",
-  "main": "index.js",
+  "main": "textToHTML.js",
   "bin": {
     "textToHTML": "./textToHTML.js"
   },
@@ -10,7 +10,7 @@
     "cli"
   ],
   "author": "Andre Willomitzer",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "yargs": "^17.1.1"
   }
