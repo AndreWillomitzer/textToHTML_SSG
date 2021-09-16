@@ -48,7 +48,7 @@ if(!argv.o){
         throw error;
       }
     });
-}else{
+}/* else{
   if(fs.existsSync(`./${argv.o}`)){
     fs.rmdirSync(`./${argv.o}`,{recursive: true} , error=>{
       if(error){
@@ -61,7 +61,29 @@ if(!argv.o){
         throw error;
       }
     });
-} 
+}  */
+/* 
+if(argv.input.indexOf(":") != -1){
+    if(fs.existsSync(`./${argv.o}`)){
+      fs.rmdirSync(`./${argv.o}`,{recursive: true} , error=>{
+        if(error){
+          throw error;
+        }
+      });
+    }
+    fs.mkdir(`./${argv.o}`, error=>{
+      if(error){
+        throw error;
+      }
+    });
+  }else{
+    fs.mkdir(`${argv.o}`, error=>{
+      if(error){
+        throw error;
+      }
+    });
+  } 
+  */
 if(fs.lstatSync(argv.input).isDirectory()){ //if the input is a directory
 fs.readdirSync(argv.input).forEach(file =>{
   let path = argv.input + "/"+ file;
